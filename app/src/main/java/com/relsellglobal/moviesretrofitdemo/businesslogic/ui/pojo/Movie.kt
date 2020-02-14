@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Relsell Global
  */
 
-package com.relsellglobal.moviesretrofitdemo.moviesapi
+package com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo
 
 import com.google.gson.annotations.SerializedName
 
@@ -11,10 +11,4 @@ class Movie{
     var name = ""
     @SerializedName("year")
     var year = ""
-}
-
-
-class MoviesResponse {
-    @SerializedName("moviesArr")
-    var moviesArr = ArrayList<Movie>()
 }
