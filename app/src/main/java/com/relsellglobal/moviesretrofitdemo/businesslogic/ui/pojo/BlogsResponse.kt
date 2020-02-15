@@ -8,7 +8,7 @@ package com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo
 import com.google.gson.annotations.SerializedName
 
 
-class MoviesResponse {
+class BlogsResponse {
     @SerializedName("moviesArr")
-    var moviesArr = ArrayList<Movie>()
+    var moviesArr = ArrayList<Blog>()
 }

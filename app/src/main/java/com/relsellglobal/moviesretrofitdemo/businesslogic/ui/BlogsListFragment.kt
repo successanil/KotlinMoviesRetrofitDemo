@@ -14,24 +14,24 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.relsellglobal.moviesretrofitdemo.R
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Movie
-import com.relsellglobal.moviesretrofitdemo.viewmodels.MoviesListFragmentViewModel
+import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Blog
+import com.relsellglobal.moviesretrofitdemo.viewmodels.BlogsListFragmentViewModel
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [MoviesListFragment.OnListFragmentInteractionListener] interface.
+ * [BlogsListFragment.OnListFragmentInteractionListener] interface.
  */
-class MoviesListFragment : Fragment() {
+class BlogsListFragment : Fragment() {
 
     // TODO: Customize parameters
     private var columnCount = 1
 
 
     var moviesListRV : RecyclerView ?= null
-    var adapter : MovieItemRecyclerViewAdapter ?= null
+    var adapter : BlogItemRecyclerViewAdapter ?= null
 
-    var movieList = ArrayList<Movie>()
+    var movieList = ArrayList<Blog>()
 
 
     override fun onCreateView(
@@ -50,11 +50,11 @@ class MoviesListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        adapter = MovieItemRecyclerViewAdapter(movieList)
+        adapter = BlogItemRecyclerViewAdapter(movieList)
         moviesListRV?.layoutManager = LinearLayoutManager(activity)
         moviesListRV?.adapter = adapter
 
-        val model = ViewModelProviders.of(this).get(MoviesListFragmentViewModel::class.java)
+        val model = ViewModelProviders.of(this).get(BlogsListFragmentViewModel::class.java)
 
         model.fetchMoviesForYear(2001).observe(this, Observer {
             if (it != null && !it.isEmpty()) {

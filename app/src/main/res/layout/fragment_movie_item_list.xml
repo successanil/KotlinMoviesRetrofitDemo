@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
     android:layout_marginTop="8dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".businesslogic.ui.MoviesListFragment"
+    tools:context=".businesslogic.ui.BlogsListFragment"
     tools:listitem="@layout/fragment_movie_item" />

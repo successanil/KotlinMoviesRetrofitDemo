@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.relsellglobal.moviesretrofitdemo.R
 import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.dummy.DummyContent.DummyItem
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Movie
+import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Blog
 import kotlinx.android.synthetic.main.fragment_movie_item.view.*
 
 /**
@@ -20,15 +20,15 @@ import kotlinx.android.synthetic.main.fragment_movie_item.view.*
  * specified [OnListFragmentInteractionListener].
  * TODO: Replace the implementation with code for your data type.
  */
-class MovieItemRecyclerViewAdapter(
-    private val mValues: List<Movie>
-) : RecyclerView.Adapter<MovieItemRecyclerViewAdapter.ViewHolder>() {
+class BlogItemRecyclerViewAdapter(
+    private val mValues: List<Blog>
+) : RecyclerView.Adapter<BlogItemRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as Movie
+            val item = v.tag as Blog
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
         }
