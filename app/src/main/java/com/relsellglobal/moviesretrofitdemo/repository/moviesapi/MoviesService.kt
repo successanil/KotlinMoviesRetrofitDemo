@@ -10,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MoviesService {
-    @GET("movies.php?")
+    @GET("getMovies?")
     fun getMoviesList(@Query("year") year : String) : Call<MoviesResponse>
 }
 

@@ -51,7 +51,7 @@ class MoviesRepository private constructor() {
                 }
             }
             override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
-
+                println(t)
             }
         })
 

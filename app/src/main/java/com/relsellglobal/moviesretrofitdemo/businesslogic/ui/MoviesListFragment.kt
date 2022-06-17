@@ -56,7 +56,7 @@ class MoviesListFragment : Fragment() {
 
         val model = ViewModelProviders.of(this).get(MoviesListFragmentViewModel::class.java)
 
-        model.fetchMoviesForYear(2001).observe(this, Observer {
+        model.fetchMoviesForYear(2011).observe(this, Observer {
             if (it != null && !it.isEmpty()) {
                 movieList.addAll(it)
                 adapter?.notifyDataSetChanged()

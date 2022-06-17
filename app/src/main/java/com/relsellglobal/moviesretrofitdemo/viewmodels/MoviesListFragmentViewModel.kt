@@ -15,7 +15,7 @@ class MoviesListFragmentViewModel : ViewModel() {
 
     fun fetchMoviesForYear(year : Int) : LiveData<List<Movie>> {
         if(!::moviesList.isInitialized){
-            moviesList = MutableLiveData()
+            //moviesList = MutableLiveData()
             moviesList = loadMovies(year)
         }
         return moviesList

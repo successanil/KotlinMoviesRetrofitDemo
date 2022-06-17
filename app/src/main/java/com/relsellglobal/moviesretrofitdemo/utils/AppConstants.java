@@ -6,6 +6,6 @@ package com.relsellglobal.moviesretrofitdemo.utils;
 
 public class AppConstants {
     public interface Http {
-        String baseUrl = "https://www.relsellglobal.in/tutorial_blogs/";
+        String baseUrl = "http://192.168.29.232:5000/";
     }
 }
