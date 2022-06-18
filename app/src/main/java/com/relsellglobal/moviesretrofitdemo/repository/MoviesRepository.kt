@@ -5,9 +5,9 @@
 package com.relsellglobal.moviesretrofitdemo.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Movie
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.MoviesResponse
-import com.relsellglobal.moviesretrofitdemo.repository.moviesapi.MoviesService
+import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Product
+import com.relsellglobal.moviesretrofitdemo.repository.network.ProductApiResponse
+import com.relsellglobal.moviesretrofitdemo.repository.network.ProductsApiService
 import com.relsellglobal.moviesretrofitdemo.utils.AppConstants
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,23 +26,23 @@ class MoviesRepository private constructor() {
         val instance: MoviesRepository by lazy { HOLDER.INSTANCE }
     }
 
-    fun fetchMoviesData(year : Int): MutableLiveData<List<Movie>> {
+    fun fetchProducts(): MutableLiveData<List<Product>> {
 
-        val data = MutableLiveData<List<Movie>>()
+        val data = MutableLiveData<List<Product>>()
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service = retrofit.create(MoviesService::class.java)
-        val call = service.getMoviesList(""+year)
+        val service = retrofit.create(ProductsApiService::class.java)
+        val call = service.getProductsList()
 
-        call.enqueue(object : Callback<MoviesResponse> {
-            override fun onResponse(call: Call<MoviesResponse>, response: Response<MoviesResponse>) {
+        call.enqueue(object : Callback<List<Product>> {
+            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 if (response.code() == 200) {
                     val movieResponse = response.body()!!
-                    data.value = movieResponse.moviesArr
+                    data.value = movieResponse
 //                    for( movie in movieResponse.moviesArr){
 //                        Log.v("MoviesRepository", movie.name)
 //                    }
@@ -50,7 +50,7 @@ class MoviesRepository private constructor() {
 
                 }
             }
-            override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
+            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
                 println(t)
             }
         })

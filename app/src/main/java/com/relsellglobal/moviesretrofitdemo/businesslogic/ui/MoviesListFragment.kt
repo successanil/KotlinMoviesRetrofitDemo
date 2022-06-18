@@ -10,11 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.relsellglobal.moviesretrofitdemo.R
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Movie
+import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Product
 import com.relsellglobal.moviesretrofitdemo.viewmodels.MoviesListFragmentViewModel
 
 /**
@@ -31,7 +31,7 @@ class MoviesListFragment : Fragment() {
     var moviesListRV : RecyclerView ?= null
     var adapter : MovieItemRecyclerViewAdapter ?= null
 
-    var movieList = ArrayList<Movie>()
+    var movieList = ArrayList<Product>()
 
 
     override fun onCreateView(
@@ -54,9 +54,9 @@ class MoviesListFragment : Fragment() {
         moviesListRV?.layoutManager = LinearLayoutManager(activity)
         moviesListRV?.adapter = adapter
 
-        val model = ViewModelProviders.of(this).get(MoviesListFragmentViewModel::class.java)
+        val model =   ViewModelProvider(activity!!)[MoviesListFragmentViewModel::class.java]
 
-        model.fetchMoviesForYear(2011).observe(this, Observer {
+        model.fetchProducts().observe(activity!!, {
             if (it != null && !it.isEmpty()) {
                 movieList.addAll(it)
                 adapter?.notifyDataSetChanged()

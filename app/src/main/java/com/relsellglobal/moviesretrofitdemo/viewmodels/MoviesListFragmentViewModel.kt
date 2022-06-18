@@ -7,21 +7,21 @@ package com.relsellglobal.moviesretrofitdemo.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Movie
+import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Product
 import com.relsellglobal.moviesretrofitdemo.repository.MoviesRepository
 
 class MoviesListFragmentViewModel : ViewModel() {
-    private lateinit var moviesList : MutableLiveData<List<Movie>>
+    private lateinit var moviesList : MutableLiveData<List<Product>>
 
-    fun fetchMoviesForYear(year : Int) : LiveData<List<Movie>> {
+    fun fetchProducts() : LiveData<List<Product>> {
         if(!::moviesList.isInitialized){
             //moviesList = MutableLiveData()
-            moviesList = loadMovies(year)
+            moviesList = loadProducts()
         }
         return moviesList
     }
 
-    private fun loadMovies(year : Int): MutableLiveData<List<Movie>> {
-        return MoviesRepository.instance.fetchMoviesData(year)
+    private fun loadProducts(): MutableLiveData<List<Product>> {
+        return MoviesRepository.instance.fetchProducts()
     }
 }
