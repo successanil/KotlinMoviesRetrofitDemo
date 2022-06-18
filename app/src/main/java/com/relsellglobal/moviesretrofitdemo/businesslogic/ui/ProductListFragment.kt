@@ -81,14 +81,16 @@ class ProductListFragment : Fragment() {
             ViewModelProvider(requireActivity(), productsViewModelFactory).get(ProductsListFragmentViewModel::class.java)
 
         CoroutineScope(Dispatchers.Main).launch {
-            productsListFragmentViewModel.getProducts().observe(requireActivity(), {
-                if (it != null && !it.isEmpty()) {
-                    movieList.addAll(it)
-                    adapter?.notifyDataSetChanged()
-                }
+            if(isAdded) {
+                productsListFragmentViewModel.getProducts().observe(requireActivity(), {
+                    if (it != null && !it.isEmpty()) {
+                        movieList.addAll(it)
+                        adapter?.notifyDataSetChanged()
+                    }
 
 
-            })
+                })
+            }
 
         }
 
