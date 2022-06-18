@@ -7,7 +7,7 @@ package com.relsellglobal.moviesretrofitdemo.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Product
+import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
 import com.relsellglobal.moviesretrofitdemo.repository.MoviesRepository
 
 class MoviesListFragmentViewModel : ViewModel() {

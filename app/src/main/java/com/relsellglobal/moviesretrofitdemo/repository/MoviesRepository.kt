@@ -5,8 +5,7 @@
 package com.relsellglobal.moviesretrofitdemo.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Product
-import com.relsellglobal.moviesretrofitdemo.repository.network.ProductApiResponse
+import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
 import com.relsellglobal.moviesretrofitdemo.repository.network.ProductsApiService
 import com.relsellglobal.moviesretrofitdemo.utils.AppConstants
 import retrofit2.Call

@@ -2,7 +2,7 @@
  * Copyright (c) 2020. Relsell Global
  */
 
-package com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo
+package com.relsellglobal.moviesretrofitdemo.businesslogic.pojo
 
 import com.google.gson.annotations.SerializedName
 

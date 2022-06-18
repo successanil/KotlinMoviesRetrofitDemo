@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.relsellglobal.moviesretrofitdemo.R
 import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.dummy.DummyContent.DummyItem
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Product
+import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
 
 
 /**

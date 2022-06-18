@@ -6,7 +6,7 @@
 package com.relsellglobal.moviesretrofitdemo.repository.network
 
 import com.google.gson.annotations.SerializedName
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.pojo.Product
+import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
 
 
 class ProductApiResponse {
