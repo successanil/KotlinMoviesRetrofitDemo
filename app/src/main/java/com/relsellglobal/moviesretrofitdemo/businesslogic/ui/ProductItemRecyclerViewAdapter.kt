@@ -11,8 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.relsellglobal.moviesretrofitdemo.R
-import com.relsellglobal.moviesretrofitdemo.businesslogic.ui.dummy.DummyContent.DummyItem
-import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
+import com.relsellglobal.moviesretrofitdemo.businesslogic.models.Product
 
 
 /**
@@ -20,9 +19,9 @@ import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
  * specified [OnListFragmentInteractionListener].
  * TODO: Replace the implementation with code for your data type.
  */
-class MovieItemRecyclerViewAdapter(
+class ProductItemRecyclerViewAdapter(
     private val mValues: List<Product>
-) : RecyclerView.Adapter<MovieItemRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ProductItemRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 

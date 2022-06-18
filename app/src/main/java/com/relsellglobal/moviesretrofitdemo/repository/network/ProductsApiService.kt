@@ -4,8 +4,7 @@
 
 package com.relsellglobal.moviesretrofitdemo.repository.network
 
-import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
-import retrofit2.Call
+import com.relsellglobal.moviesretrofitdemo.businesslogic.models.Product
 import retrofit2.http.GET
 
 interface ProductsApiService {
