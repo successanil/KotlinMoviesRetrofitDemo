@@ -4,10 +4,14 @@
 
 package com.relsellglobal.moviesretrofitdemo.repository
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
 import com.relsellglobal.moviesretrofitdemo.repository.network.ProductsApiService
 import com.relsellglobal.moviesretrofitdemo.utils.AppConstants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,36 +29,38 @@ class MoviesRepository private constructor() {
         val instance: MoviesRepository by lazy { HOLDER.INSTANCE }
     }
 
-    fun fetchProducts(): MutableLiveData<List<Product>> {
+    suspend fun fetchProducts(): MutableLiveData<List<Product>> {
 
         val data = MutableLiveData<List<Product>>()
+
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service = retrofit.create(ProductsApiService::class.java)
-        val call = service.getProductsList()
+//        val service = retrofit.create(ProductsApiService::class.java)
+//        val call = service.getProductsList()
+//
+//        call.enqueue(object : Callback<List<Product>> {
+//            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+//                if (response.code() == 200) {
+//                    val movieResponse = response.body()!!
+//                    data.value = movieResponse
+////                    for( movie in movieResponse.moviesArr){
+////                        Log.v("MoviesRepository", movie.name)
+////                    }
+//
+//
+//                }
+//            }
+//            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+//                println(t)
+//            }
+//        })
 
-        call.enqueue(object : Callback<List<Product>> {
-            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
-                if (response.code() == 200) {
-                    val movieResponse = response.body()!!
-                    data.value = movieResponse
-//                    for( movie in movieResponse.moviesArr){
-//                        Log.v("MoviesRepository", movie.name)
-//                    }
-
-
-                }
-            }
-            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
-                println(t)
-            }
-        })
-
-
+        val productsApiService = retrofit.create(ProductsApiService::class.java)
+        data.value = productsApiService.getProductsList()
 
         return data
     }

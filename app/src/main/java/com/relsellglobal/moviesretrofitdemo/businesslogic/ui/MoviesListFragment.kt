@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.relsellglobal.moviesretrofitdemo.R
 import com.relsellglobal.moviesretrofitdemo.businesslogic.pojo.Product
 import com.relsellglobal.moviesretrofitdemo.viewmodels.MoviesListFragmentViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * A fragment representing a list of Items.
@@ -55,12 +58,16 @@ class MoviesListFragment : Fragment() {
 
         val model =   ViewModelProvider(activity!!)[MoviesListFragmentViewModel::class.java]
 
-        model.fetchProducts().observe(activity!!, {
-            if (it != null && !it.isEmpty()) {
-                movieList.addAll(it)
-                adapter?.notifyDataSetChanged()
-            }
-        })
+        CoroutineScope(Dispatchers.Main).launch {
+            model.fetchProducts().observe(activity!!, {
+                if (it != null && !it.isEmpty()) {
+                    movieList.addAll(it)
+                    adapter?.notifyDataSetChanged()
+                }
+            })
+        }
+
+
 
     }
 

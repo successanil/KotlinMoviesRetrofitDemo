@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 interface ProductsApiService {
     @GET("products")
-    fun getProductsList() : Call<List<Product>>
+    suspend fun getProductsList() : List<Product>
 }
 
 
