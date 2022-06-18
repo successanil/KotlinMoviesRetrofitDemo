@@ -20,6 +20,7 @@ import com.relsellglobal.moviesretrofitdemo.R
 import com.relsellglobal.moviesretrofitdemo.businesslogic.models.Product
 import com.relsellglobal.moviesretrofitdemo.viewmodels.ProductViewModelFactory
 import com.relsellglobal.moviesretrofitdemo.viewmodels.ProductsListFragmentViewModel
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,14 +39,12 @@ class ProductListFragment : Fragment() {
     lateinit var productsViewModelFactory: ProductViewModelFactory
 
 
-
-
     // TODO: Customize parameters
     private var columnCount = 1
 
 
-    var moviesListRV : RecyclerView ?= null
-    var adapter : ProductItemRecyclerViewAdapter ?= null
+    var moviesListRV: RecyclerView? = null
+    var adapter: ProductItemRecyclerViewAdapter? = null
 
     var movieList = ArrayList<Product>()
 
@@ -61,7 +60,10 @@ class ProductListFragment : Fragment() {
         return view
     }
 
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        AndroidSupportInjection.inject(this)
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,23 +77,20 @@ class ProductListFragment : Fragment() {
         moviesListRV?.layoutManager = LinearLayoutManager(activity)
         moviesListRV?.adapter = adapter
 
-//        productsListFragmentViewModel = ViewModelProvider(requireActivity(),productsViewModelFactory).get(ProductsListFragmentViewModel::class.java)
-//
-//        productsListFragmentViewModel.productsLiveData.observe(requireActivity(), {
-//                if (it != null && !it.isEmpty()) {
-//                    movieList.addAll(it)
-//                    adapter?.notifyDataSetChanged()
-//                }
-//            })
+        productsListFragmentViewModel =
+            ViewModelProvider(requireActivity(), productsViewModelFactory).get(ProductsListFragmentViewModel::class.java)
+
+        CoroutineScope(Dispatchers.Main).launch {
+            productsListFragmentViewModel.getProducts().observe(requireActivity(), {
+                if (it != null && !it.isEmpty()) {
+                    movieList.addAll(it)
+                    adapter?.notifyDataSetChanged()
+                }
 
 
+            })
 
+        }
 
     }
-
-//    interface OnListFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        fun onListFragmentInteraction(item: DummyItem?)
-//    }
-
 }

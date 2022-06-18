@@ -34,30 +34,29 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        (application as MyApplication).applicationComponent.inject(this)
-
-        productsListFragmentViewModel = ViewModelProvider(this,productsViewModelFactory).get(
-            ProductsListFragmentViewModel::class.java)
-
-
+//        (application as MyApplication).applicationComponent.inject(this)
+//
+//        productsListFragmentViewModel = ViewModelProvider(this,productsViewModelFactory).get(
+//            ProductsListFragmentViewModel::class.java)
 
 
 
-        CoroutineScope(Dispatchers.Main).launch {
-            productsListFragmentViewModel.getProducts().observe(this@MainActivity, {
-            if (it != null && !it.isEmpty()) {
-//                movieList.addAll(it)
-//                adapter?.notifyDataSetChanged()
-                println()
-            }
-        })
-        }
 
 
-//        supportFragmentManager
-//            .beginTransaction()
-//            .replace(R.id.rootLayout,ProductListFragment())
-//            .commit()
+//        CoroutineScope(Dispatchers.Main).launch {
+//            productsListFragmentViewModel.getProducts().observe(this@MainActivity, {
+//            if (it != null && !it.isEmpty()) {
+////                movieList.addAll(it)
+////                adapter?.notifyDataSetChanged()
+//                println()
+//            }
+//        })
+//        }
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.rootLayout,ProductListFragment())
+            .commit()
 
 
 
